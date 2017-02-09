@@ -1,0 +1,232 @@
+CS 322 01 Translator Construction: Theory and App. 
+
+Final Exam 
+
+ 
+
+Name:__________________________________ 
+
+ 
+
+ 
+
+Part 1: Short answers 
+
+ 
+
+1) Give an example of an English sentence that is syntactically correct but not 
+semantically correct. 
+
+
+ 
+
+ 
+
+2) why the following grammar is not LL(k) for any k 
+
+
+S . E $ 
+
+E . int 
+
+E . (E + E) 
+
+E . (E – E) 
+
+ 
+
+3) Give a grammar that is equivalent to the grammar in problem 3, but is LL(1) 
+
+ 
+
+ 
+
+ 
+
+Part 2: Regular expressions and finite automata 
+
+1) Describe, in one sentence, the strings captured by the following regular 
+expression : 
+
+
+(ac|ab)* 
+
+ 
+
+2) Consider the following non-deterministic finite automaton. Fill in the transition table of 
+its deterministic equivalent. 
+
+
+ 
+
+ 
+
+. 
+
+ 
+
+1 
+
+2 
+
+6 
+
+3 
+
+8 
+
+5 
+
+7 
+
+4 
+
+. 
+
+
+
+. 
+
+. 
+
+a 
+
+b 
+
+c 
+
+b 
+
+c 
+
+ 
+
+ 
+
+ 
+
+3) Draw the reduced version of the DFA you produced in the previous step. 
+
+
+
+4) Consider the following regular expression from the alphabet {a,b}: b*a | bb Show 
+NFA state diagram for it. 
+
+
+ 
+
+Part 3: Grammars 
+
+Let G be the grammar: 
+
+S 
+
+A 
+
+. 
+
+. 
+
+ABC 
+xB | . 
+
+ 
+
+B 
+
+. 
+
+yC 
+
+ 
+
+C 
+
+. 
+
+Az 
+
+
+
+ 
+
+ 
+
+Using this grammar, answer the following questions. 
+
+ 
+
+1) What are the terminals and non-terminals of this grammar? 
+
+
+ 
+
+2) Draw the parse tree for the following partial derivation (i.e., some of the leaves of 
+your parse tree may be non-terminals) 
+
+
+ 
+
+S .* yAzC 
+
+ 
+
+3) Did this partial derivation get produced by left-derivation or right-derivation? 
+
+
+ 
+
+4) Briefly discuss what the potential advantages/disadvantages are of bottom-up 
+versus a top-down parser generators. 
+
+
+ 
+
+ 
+
+Part 4: LL parsers 
+
+Answer the questions in this part using the following grammar: 
+
+ S . Ax$ 
+
+ 
+
+ 
+
+1) Define the following sets: 
+
+ 
+
+ 
+
+ 
+
+2) Fill in the LL(1) parse table 
+
+ 
+
+ 
+
+4) Is this an LL(1) grammar? Why or why not? (2 points) 
+
+
+ 
+
+Part 5: JFLAP 
+
+Given the following grammar: 
+
+module ::= statement 
+
+statement ::= PRINT expression_list 
+
+expression_list ::= expression | expression COMMA expression_list 
+
+expression ::= INT | MINUS expression | expression PLUS expression 
+
+ 
+
+Draw the parse tree 
+
+

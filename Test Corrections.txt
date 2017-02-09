@@ -1,0 +1,99 @@
+TITLE Finite State Machine              (Finite.asm)
+
+; This program implements a finite state machine that
+; accepts an integer with an optional leading sign.
+
+INCLUDE Irvine32.inc
+
+
+.code
+main PROC
+mov eax,00000000h
+	mov ebx,00000000h
+	mov edx,00000000h
+	mov al,11001111b
+	and al,00101011b
+	call WriteBin
+	call crlf
+	mov al,4Bh
+	and al,6Ch
+	call WriteBin
+	call crlf
+	mov al,00111100b
+	or al,82h
+	call WriteBin
+	call crlf
+	mov al,94h
+	xor al,37h
+	call WriteBin
+	call crlf
+	mov al,9Ch
+	not al
+	call WriteHex
+	call crlf
+	mov al,4Bh
+	and al,74h
+	call WriteHex
+	call crlf
+	mov al,86h
+	or al,42h
+	call WriteHex
+	call crlf
+	mov al,72h
+	xor al,0A5h
+	call WriteHex
+	call crlf
+	mov al,00110011b
+	test al,2
+	call DumpRegs
+	call crlf
+	mov al,6
+	cmp al,5
+	call DumpRegs
+	call crlf
+	mov al,5
+	cmp al,7
+	call DumpRegs
+	mov al,10000101b
+	clc
+	rcr al,1
+	call WriteBin
+	call crlf
+	mov al,01101011b
+	stc
+	rcl al,2
+	call WriteBin
+	call crlf
+	mov ax,0000000010011101b
+	mov bx,1010101010000000b
+	shld ax,bx,1
+	call WriteBin
+	call crlf
+	mov ax,0000000010011101b
+	mov bx,1010101010001011b
+	shrd ax,bx,2
+	call WriteBin
+	call crlf
+	mov dx,800h
+	mov ax,10h
+	imul dx
+	call DumpRegs
+	call crlf
+	mov dx,-16
+	mov ax,2
+	imul dx
+	call DumpRegs
+	call crlf
+	mov dx,000Fh
+	mov ax,6342h
+	mov bx,100h
+	div bx
+	call DumpRegs
+	call crlf
+	mov bl,al
+	and bl,00111111b
+	call DumpRegs
+	call crlf
+	exit
+main ENDP
+END main

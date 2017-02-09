@@ -1,0 +1,80 @@
+TITLE Parity Checking              (ParCheck.asm)
+
+; This program checks the EAX regitster and returns a value of True in the 
+; EAX register if the bytes in an array, passed through EAX, contain an 
+; even parity.  The procedure that checks the array will be called twice.
+; 1 is True and 0 is false.
+
+INCLUDE Irvine32.inc
+
+.data
+	evenarray BYTE 40H,63H,0F0H,0FFH,0ABH,01H,01H,02H,65H,00H
+	oddarray BYTE 01H,00H,00h,48h,24h,12h,06h,10h,20h,01h
+	evensize BYTE ($-(OFFSET evenarray))
+	oddsize BYTE ($-(OFFSET oddarray))
+.code
+main PROC
+;Nothing major is done in the main procedure.  Both Procedures are called.
+	call EvenParityChecker
+	call OddParityChecker
+	exit
+main ENDP
+
+EvenParityChecker PROC
+;Checks the parity of evenarray and returns a in EAX a 1 if it is even and
+;0 if it is odd.
+	movzx esi,evenarray
+	movzx ecx,evensize
+	mov al,evenarray[esi]
+	dec ecx
+	add esi,TYPE evenarray
+	mov ah,evenarray[esi]
+	dec ecx
+;Each value in the array is put through the xor operation and stored in al
+L1:	xor al,ah
+	add esi,TYPE evenarray
+	mov al,evenarray[esi]
+	Loop L1
+	JP L2
+	JNP L3
+;Assigns a true value of 1 if the array has even parity
+L2: mov eax,1
+	call WriteDec
+	call WriteChar
+	ret
+;Assigns a false value of 0 if the array has odd parity
+L3:	mov eax,0
+	call WriteDec
+	call WriteChar
+	ret
+EvenParityChecker ENDP
+
+OddParityChecker PROC
+;Checks the parity of evenarray and returns a in EAX a 1 if it is even and
+;0 if it is odd.
+	movzx esi,oddarray
+	movzx ecx,oddsize
+	mov al,oddarray[esi]
+	dec ecx
+	add esi,TYPE evenarray
+	mov ah,oddarray[esi]
+	dec ecx
+;Each value in the array is put through the xor operation and stored in al
+L4:	xor al,ah
+	add esi,TYPE oddarray
+	mov al,oddarray[esi]
+	Loop L4
+	JP L5
+	JNP L6
+;Assigns a true value of 1 if the array has even parity
+L5: mov eax,1
+	call WriteDec
+	call WriteChar
+	ret
+;Assigns a false value of 0 if the array has odd parity
+L6:	mov eax,0
+	call WriteDec
+	call WriteChar
+	ret
+OddParityChecker ENDP
+END main
